@@ -1,0 +1,10 @@
+db.sqlite3
+**/__pycache
+*.pyc
+staticfiles/
+*.key
+*.pem
+config.txt
+.log.txt
+.env
+*.jpg

@@ -1,0 +1,5 @@
+django == 3.0.5
+python-telegram-bot
+pyTelegramBotAPI
+gunicorn
+aiohttp
