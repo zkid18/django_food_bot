@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'posts.apps.PostsConfig'
+    'posts.apps.PostsConfig',
+    'telebot_api.apps.TelebotApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+
+# Telegram data
+
+BOT_TOKEN = get_env_variable("BOT_TOKEN")

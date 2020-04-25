@@ -18,8 +18,12 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from posts.views import PostList
+from telebot_api.views import BotView
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', PostList.as_view(), name='list'),
+    path('bot/webhook', csrf_exempt(BotView.as_view()))
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
