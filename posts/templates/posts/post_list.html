@@ -1,12 +1,9 @@
-<html>
-    <head>
-        <title>Things I eat</title>
-    </head>
-    <body>
-        {% for post in object_list %}
-        <strong>{{post.author.username}}</strong>>
-        <img src = "{{ post.image.url }}" width=400 height=400>
-        <p><em>{{ post.created }}</em> {{ post.description }}</p>
-        {% endfor %}
-    </body>
+{% extends 'posts/base.html' %}
+{% block content %}
+    {% for post in object_list %}
+    <strong>{{post.author.username}}</strong>>
+    <img src = "{{ post.image.url }}" width=400 height=400>
+    <p><em>{{ post.created }}</em> {{ post.description }}</p>
+    {% endfor %}
+{% endblock %}
 </html>
