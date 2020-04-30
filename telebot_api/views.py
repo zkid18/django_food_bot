@@ -16,8 +16,6 @@ from posts.models import Post
 TELEGRAM_URL = "https://api.telegram.org/bot"
 BOT_TOKEN = settings.BOT_TOKEN
 
-
-# https://api.telegram.org/botBOT_TOKEN?url=https://8ed39930.ngrok.io/bot/webhook
 tb = telebot.TeleBot(BOT_TOKEN, threaded=False)
 
 class BotView(View):
@@ -32,7 +30,6 @@ class BotView(View):
 @tb.message_handler(content_types=['photo'])
 def handle_photo(message):
     image = tb.get_file(message.photo[-1].file_id)
-    print(image)
     # post = Post(image=image, description="photo_insta")
     # post.save()
     print("Photo received")
