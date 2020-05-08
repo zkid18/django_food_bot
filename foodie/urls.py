@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('', PostList.as_view(), name='list'),
-    path('posts', PostList.as_view(), name='list'),
+    path('posts/', PostList.as_view(), name='list'),
     path('bot/webhook', csrf_exempt(BotView.as_view()))
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
