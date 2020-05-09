@@ -33,6 +33,9 @@
                             {% csrf_token %}
                             <button type="submit">Logout</button>
                         </form>
+                        <form class="new-post" action="{% url 'new' %}">
+                            <button type="submit">New</button>
+                        </form>
                     </li>
                 </ul>
             </nav>
