@@ -11,6 +11,6 @@ class PostList(ListView):
 
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['image', 'description']
+    fields = ['image', 'description', 'author']
     success_url = '/'
     login_url = '/accounts/login'
