@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import PostList
+from posts.views import PostList, PostCreate
 from telebot_api.views import BotView
 from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('new/', PostCreate.as_view(), name='new'),
     path('', PostList.as_view(), name='list'),
     path('posts/', PostList.as_view(), name='list'),
     path('bot/webhook', csrf_exempt(BotView.as_view()))

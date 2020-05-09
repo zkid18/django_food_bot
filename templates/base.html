@@ -26,6 +26,16 @@
     <body>
         <div class = "header">
             <a href="/">Thing I eat</a>
+            <nav>
+                <ul>
+                    <li>
+                        <form class="logout-link" action= "{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
         </div>
         <div class="container">
             {% block content %}
