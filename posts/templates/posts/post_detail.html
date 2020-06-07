@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" style="width: 30rem;">
+    <img src = "{{ post.image.url }}" style="height: 40rem;">
+    <div class="card-body">
+        <h5 class="card-tittle">{{post.author.username}}</h5>
+        <p class="card-text">{{ post.description }}</p>
+        <p class="card-text">Likes : {{ post.likes.count }}</p>
+        {% if user.is_authenticated %}
+        <form action="{% url 'like' pk=post.id %}" method="GET">
+            {% if post.likes.count == 0 %}
+                <button type="submit" class="btn btn-secondary">Like</button>
+            {% else %}
+                <button type="submit" class="btn btn-secondary">Dislike</button>
+            {% endif %}
+        </form>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
