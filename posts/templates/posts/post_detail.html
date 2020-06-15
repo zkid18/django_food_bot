@@ -8,7 +8,7 @@
         <p class="card-text">Likes : {{ post.likes.count }}</p>
         {% if user.is_authenticated %}
         <form action="{% url 'like' pk=post.id %}" method="GET">
-            {% if post.likes.count == 0 %}
+            {% if post.likes.count %}
                 <button type="submit" class="btn btn-secondary">Like</button>
             {% else %}
                 <button type="submit" class="btn btn-secondary">Dislike</button>

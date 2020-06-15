@@ -114,3 +114,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Telegram data
 BOT_TOKEN = get_env_variable("BOT_TOKEN")
+TELEGRAM_URL = "https://api.telegram.org/bot"

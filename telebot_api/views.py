@@ -10,10 +10,7 @@ from django.conf import settings
 
 from posts.models import Post
 
-
-# Create your views here.
-
-TELEGRAM_URL = "https://api.telegram.org/bot"
+TELEGRAM_URL = settings.TELEGRAM_URL
 BOT_TOKEN = settings.BOT_TOKEN
 
 tb = telebot.TeleBot(BOT_TOKEN, threaded=False)
