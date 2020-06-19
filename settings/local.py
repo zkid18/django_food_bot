@@ -1,5 +1,5 @@
 from .base import *
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
-DEBUG = get_env_variable('DEBUG')
+# DEBUG = get_env_variable('DEBUG')

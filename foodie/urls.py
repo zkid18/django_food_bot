@@ -18,5 +18,7 @@ urlpatterns = [
     path('bot/webhook', csrf_exempt(BotView.as_view())),
 ]
 
+handler404 = 'posts.views.custom_404_error'
+
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

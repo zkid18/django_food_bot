@@ -43,3 +43,10 @@ class PostDetail(DetailView):
         context = super().get_context_data(*args, **kwargs)
         return context
         
+def custom_404_error(request, exception):
+    print(request.path)
+    data = {
+        'method': request.method,
+        'uri': request.path
+        }
+    return render(request,  'post_404.html', data)
