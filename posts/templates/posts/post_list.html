@@ -9,10 +9,9 @@
             <p class="card-text">Likes : {{ post.likes.count }}</p>
             <p class="id">Post_id: {{ post.id }}</p>
             <div class="btn-group-vertical">
-                <form action="{% url 'detail' pk=post.id %}" method="GET">
+                <a href="{% url detail' pk=post.id %}" method="GET">
                     <button type="submit" class="btn btn-secondary">Detail</button>
-                </form>
-                <!-- <button type="button" class="btn btn-secondary">down</button> -->
+                </a>
             </div>
         </div>
     </div>
