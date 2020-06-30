@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import RedirectView
 from django.shortcuts import get_object_or_404
+from django.db import transaction
 # Create your views here.
 from posts.models import Post
 
@@ -13,7 +14,7 @@ class PostList(ListView):
     model = Post
 
 class PostLikeToggle(RedirectView):
-
+    @transaction.atomic
     def get_redirect_url(self, *args, **kwargs):
         post_id = kwargs.get('pk')
         post = get_object_or_404(Post, id=post_id)

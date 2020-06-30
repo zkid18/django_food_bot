@@ -9,9 +9,9 @@
         {% if user.is_authenticated %}
         <form action="{% url 'like' pk=post.id %}" method="GET">
             {% if post.likes.count %}
-                <button type="submit" class="btn btn-secondary">Like</button>
-            {% else %}
                 <button type="submit" class="btn btn-secondary">Dislike</button>
+            {% else %}
+                <button type="submit" class="btn btn-secondary">Like</button>
             {% endif %}
         </form>
     {% endif %}

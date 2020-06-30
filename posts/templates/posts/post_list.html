@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for post in object_list %}
-    <div class="card" style="width: 40rem;">
-        <img src = "{{ post.image.url }}" style="height: 40rem;">
-        <div class="card-body">
-            <h5 class="card-tittle">{{post.author.username}}</h5>
-            <p class="card-text">{{ post.description }}</p>
-            <p class="card-text">Likes : {{ post.likes.count }}</p>
-            <p class="id">Post_id: {{ post.id }}</p>
-            <div class="btn-group-vertical">
-                <a href="{% url detail' pk=post.id %}" method="GET">
-                    <button type="submit" class="btn btn-secondary">Detail</button>
-                </a>
+    <div class="col-auto mb-3">
+        <div class="card">
+            <img src = "{{ post.image.url }}">
+            <div class="card-body">
+                <h5 class="card-tittle">{{post.author.username}}</h5>
+                <p class="card-text">{{ post.description }}</p>
+                <p class="card-text">Likes : {{ post.likes.count }}</p>
+                <p class="id">Post_id: {{ post.id }}</p>
+                <div class="btn-group-vertical">
+                    <a href="{% url 'detail' pk=post.id %}" method="GET">
+                        <button type="submit" class="btn btn-secondary">Detail</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

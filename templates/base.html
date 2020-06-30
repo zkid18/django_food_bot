@@ -5,15 +5,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
         <title>Things I eat</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a href="/">Thing I eat</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-brand" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
+                        <li class="nav-item ml-4 mb-2">
                             <!-- {% csrf_token %}
                             <a href="{% url 'accounts:logout' %}">Logout</a> -->
                             <form class="logout-link" action= "{% url 'accounts:logout' %}" method="post">
@@ -21,22 +22,26 @@
                                 <button type="submit" class="btn btn-outline-secondary">Logout</button>
                             </form>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-4 mb-2">
                             <form class="new-post" action="{% url 'new' %}">
                                 <button type="submit" class="btn btn-primary">New</button>
                             </form>
                         </li>
-                        <li>
+                        <li class="nav-item ml-4">
                             <p>{{user}}</p>
                         </li>
                     {% else %}
-                        <li class="nav-item"><a href="{% url 'accounts:login' %}">Login</a></li>
-                        <li class="nav-item"><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                        <li class="nav-item ml-4">
+                            <a href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        <li class="nav-item ml-4">
+                            <a href="{% url 'accounts:signup' %}">Signup</a>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
         </nav>
-        <div class="container">
+        <div class="container mt-4">
             {% block content %}
             {% endblock %}
         </div>
