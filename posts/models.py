@@ -16,7 +16,7 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, blank=True, related_name='post_likes')
 
     def get_absolute_url(self, pk):
-        return reverse("detail", kwargs={"pk": pk})
+        return reverse("posts:detail", kwargs={"pk": pk})
     
 
 class Comment(models.Model):

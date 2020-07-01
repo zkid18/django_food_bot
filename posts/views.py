@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -26,16 +26,28 @@ class PostLikeToggle(RedirectView):
         url_redirect = post.get_absolute_url(post_id)
         return url_redirect
 
-
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['image', 'description']
+    template_name = 'posts/post_new.html'
     success_url = '/'
     login_url = '/accounts/login'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class PostEdit(UpdateView):
+    model = Post
+    fields = ['image', 'description']
+    template_name = 'posts/post_edit.html'
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
 
 class PostDetail(DetailView):
     model = Post
