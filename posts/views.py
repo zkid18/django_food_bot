@@ -8,7 +8,7 @@ from django.views.generic import RedirectView
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 # Create your views here.
-from posts.models import Post
+from posts.models import Post, Like
 
 class PostList(ListView):
     model = Post
@@ -19,10 +19,15 @@ class PostLikeToggle(RedirectView):
         post_id = kwargs.get('pk')
         post = get_object_or_404(Post, id=post_id)
         user = self.request.user
-        if post.likes.filter(id=user.id).exists():
-            post.likes.remove(user)
+        like = Like.objects.get_or_create(user=user, post=post)[0]
+        print("Like", like.is_liked)
+        if like.is_liked:
+            like.is_liked = False
+            post.likes.remove(like)
         else:
-            post.likes.add(user)
+            like.is_liked = True
+            post.likes.add(like)
+        like.save()
         url_redirect = post.get_absolute_url(post_id)
         return url_redirect
 
@@ -46,7 +51,6 @@ class PostEdit(UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
 
 
 class PostDetail(DetailView):
