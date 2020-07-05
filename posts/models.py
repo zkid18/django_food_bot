@@ -17,12 +17,14 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=300)
-    # likes = models.ManyToManyField(User, blank=True, related_name='post_likes')
     likes = models.ManyToManyField('Like', related_name='post_likes')
 
+    class Meta: 
+       ordering = ('-created', '-modified', ) 
+
     def save(self, *args, **kwargs):
-        # slug = self.description + self.created
-        slug = ''.join(random.sample(string.ascii_lowercase, 10))
+        slug = slugify(self.description + '-' + self.created.strftime('%Y-%m-%d'))
+        # slug = ''.join(random.sample(string.ascii_lowercase, 10))
         self.slug = slug
         super(Post, self).save(*args, **kwargs)
 
