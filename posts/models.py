@@ -23,8 +23,8 @@ class Post(models.Model):
        ordering = ('-created', '-modified', ) 
 
     def save(self, *args, **kwargs):
-        slug = slugify(self.description + '-' + self.created.strftime('%Y-%m-%d'))
-        # slug = ''.join(random.sample(string.ascii_lowercase, 10))
+        # slug = slugify(self.description + '-' + self.created.date().strftime('%Y-%m-%d'))
+        slug = ''.join(random.sample(string.ascii_lowercase, 10))
         self.slug = slug
         super(Post, self).save(*args, **kwargs)
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
@@ -11,7 +12,7 @@ class SignupView(View):
             user = form.save()
             #  log the user in
             login(request, user)
-            return redirect('/posts')
+            return redirect(reverse('posts:list'))
         return render(request, 'accounts/signup.html', { 'form': form })
 
     def get(self, request):
@@ -28,7 +29,7 @@ class LoginView(View):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('/posts')
+                return redirect(reverse('posts:list'))
         return render(request, 'accounts/login.html', { 'form': form })
 
     def get(self, request):
@@ -38,4 +39,4 @@ class LoginView(View):
 class LogoutView(View):
     def post(self, request):
         logout(request)
-        return redirect('/posts')
+        return redirect(reverse('posts:list'))

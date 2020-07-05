@@ -52,7 +52,6 @@ class PostEdit(UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-
 class PostDetail(DetailView):
     model = Post
 

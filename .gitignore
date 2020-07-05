@@ -3,6 +3,7 @@ db.sqlite3
 *.pyc
 staticfiles/
 media/
+foodie/media
 *.key
 *.pem
 config.txt

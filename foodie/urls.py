@@ -12,9 +12,6 @@ urlpatterns = [
     path('posts/', include('posts.urls')),
     path('accounts/', include('accounts.urls')),
     path('', PostList.as_view(), name='list'),
-    # path('posts/', PostList.as_view(), name='list'),
-    # path('posts/<pk>/like/', PostLikeToggle.as_view(), name='like'),
-    # path('posts/<pk>/', PostDetail.as_view(), name='detail'),
     path('bot/webhook', csrf_exempt(BotView.as_view())),
 ]
 
